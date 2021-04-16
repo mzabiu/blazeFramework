@@ -42,10 +42,13 @@ public class BaseTest implements FrameworkConstants {
 
 	boolean jenkinsRun = false;
 
+	String appUrl;
+
 	@BeforeSuite(alwaysRun = true)
 	public void initialize(XmlTest testngXml) throws Exception {
 		configPropertyData = ReadPropertiesFile.getProperties();
 		excelData = ReadExcelTestData.getSuiteData("TestData", "Data");
+		appUrl = configPropertyData.get(configPropertyData.get(BASEURL));
 		if (System.getProperty("jenkins.buildurl") != null) {
 			jenkinsRun = true;
 			MyLog.logInfo(
@@ -80,7 +83,6 @@ public class BaseTest implements FrameworkConstants {
 			throw new RuntimeException("Please valid browser name");
 		}
 
-		String appUrl = configPropertyData.get(configPropertyData.get(BASEURL));
 		driver = new EventFiringWebDriver(driver1);
 		DriverListener listener = new DriverListener();
 		driver.register(listener);
@@ -97,6 +99,7 @@ public class BaseTest implements FrameworkConstants {
 	public void gotoHomePage(Method m, ITestResult r) throws Exception {
 
 		Reporter.setCurrentTestResult(r);
+		driver.navigate().to(appUrl);
 
 	}
 

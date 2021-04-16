@@ -8,6 +8,8 @@ import com.blaze.pages.BasePage;
 
 public class HomePage extends BasePage {
 
+	public String windowTitle = "BlazeDemo";
+
 	public HomePage(EventFiringWebDriver driver) {
 		super(driver);
 	}

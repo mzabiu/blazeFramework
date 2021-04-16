@@ -1,11 +1,11 @@
 package com.blaze.pages;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.Select;
@@ -44,7 +44,7 @@ public class BasePage implements FrameworkConstants {
 	}
 
 	public WebElement getElement(By by) {
-		return driver.findElement(by);
+		return (driver.findElements(by)).get(0);
 	}
 
 	private Select getSelect(WebElement e) {

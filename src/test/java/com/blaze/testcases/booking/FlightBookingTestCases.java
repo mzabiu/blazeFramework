@@ -1,11 +1,14 @@
 package com.blaze.testcases.booking;
 
+import static org.testng.Assert.assertEquals;
+
 import java.lang.reflect.Method;
 import java.util.Map;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import com.blaze.pages.ConfirmationPage;
 import com.blaze.pages.HomePage;
 import com.blaze.pages.PurchasePage;
 import com.blaze.pages.ReservePage;
@@ -54,8 +57,11 @@ public class FlightBookingTestCases extends BaseTest {
 		purchasePage.selectByText(purchasePage.getDrpDnCardType(), cardType);
 		purchasePage.getTxtCreditCardNumber().sendKeys(ccNumber);
 		purchasePage.getTxtNameOnCard().sendKeys(nameOncard);
-		purchasePage.getBtnPurchaseFlight().click(); 
+		purchasePage.getBtnPurchaseFlight().click();
 
+		ConfirmationPage confirmationPage = new ConfirmationPage(driver);
+		assertEquals(confirmationPage.getLblId().isDisplayed(), true);
+		confirmationPage.verifyConfirmationId();
 	}
 
 }

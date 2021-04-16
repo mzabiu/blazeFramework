@@ -1,4 +1,4 @@
-package com.blaze.pages.reserve;
+package com.blaze.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.events.EventFiringWebDriver;

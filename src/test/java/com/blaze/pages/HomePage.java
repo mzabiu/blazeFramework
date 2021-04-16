@@ -1,4 +1,4 @@
-package com.blaze.pages.home;
+package com.blaze.pages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

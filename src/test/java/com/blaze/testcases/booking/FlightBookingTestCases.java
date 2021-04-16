@@ -28,6 +28,7 @@ public class FlightBookingTestCases extends BaseTest {
 		String cardType = testData.get(EXCEL_CARD_TYPE);
 		String nameOncard = testData.get(EXCEL_NAME_ON_CARD);
 		String airLine = testData.get(EXCEL_AIRLINES);
+		String ccNumber = testData.get(EXCEL_CC_NUMBER);
 
 		HomePage homePage = new HomePage(driver);
 		Assert.assertEquals(driver.getTitle(), homePage.windowTitle);
@@ -51,7 +52,10 @@ public class FlightBookingTestCases extends BaseTest {
 		purchasePage.getTxtState().sendKeys(state);
 		purchasePage.getTxtZipcode().sendKeys(zipCode);
 		purchasePage.selectByText(purchasePage.getDrpDnCardType(), cardType);
-		
+		purchasePage.getTxtCreditCardNumber().sendKeys(ccNumber);
+		purchasePage.getTxtNameOnCard().sendKeys(nameOncard);
+		purchasePage.getBtnPurchaseFlight().click();
+
 	}
 
 }

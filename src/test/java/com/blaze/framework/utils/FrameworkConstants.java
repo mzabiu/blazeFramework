@@ -16,6 +16,7 @@ public interface FrameworkConstants {
 	String EXCEL_CARD_TYPE = "CardType";
 	String EXCEL_NAME_ON_CARD = "NameOncard";
 	String EXCEL_AIRLINES = "Airlines";
+	String EXCEL_CC_NUMBER = "CreditCardNumber";
 
 	// variable names for config property files
 

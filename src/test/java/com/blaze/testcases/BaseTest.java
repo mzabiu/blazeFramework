@@ -54,7 +54,7 @@ public class BaseTest implements FrameworkConstants {
 			MyLog.logInfo(
 					"The execution is triggered from jenkins and the url is " + System.getProperty("jenkins.buildurl"));
 		} else
-			MyLog.logInfo("The execution is triggered from Local ");
+			MyLog.logInfo("This not a jenkins execution ");
 	}
 
 	@BeforeTest(alwaysRun = true)
@@ -90,7 +90,6 @@ public class BaseTest implements FrameworkConstants {
 		int implicitWait = Integer.valueOf(configPropertyData.get(IMPLICIT_WAIT_TIME));
 		driver.manage().timeouts().implicitlyWait(implicitWait, TimeUnit.SECONDS);
 		driver.get(appUrl);
-		MyLog.logInfo("Launching the URL: " + appUrl);
 
 		context.setAttribute("WebDriver", driver);
 	}

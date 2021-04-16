@@ -5,8 +5,8 @@
 		<listener class-name="com.blaze.listeners.TestListeners" />
 	</listeners>
 	<test name="Test">
+		<parameter name="browser" value="chrome" />
 		<classes>
-			<class name="com.blaze.testcases.BaseTest" />
 			<class
 				name="com.blaze.testcases.booking.FlightBookingTestCases" />
 		</classes>

@@ -54,7 +54,7 @@ public class FlightBookingTestCases extends BaseTest {
 		purchasePage.selectByText(purchasePage.getDrpDnCardType(), cardType);
 		purchasePage.getTxtCreditCardNumber().sendKeys(ccNumber);
 		purchasePage.getTxtNameOnCard().sendKeys(nameOncard);
-		purchasePage.getBtnPurchaseFlight().click();
+		purchasePage.getBtnPurchaseFlight().click(); 
 
 	}
 

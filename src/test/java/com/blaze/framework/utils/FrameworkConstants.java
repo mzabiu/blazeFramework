@@ -29,4 +29,9 @@ public interface FrameworkConstants {
 	String DRIVERS_PATH = "driver.path";
 	String CHROME_BINARY_PATH = "chrome.binary.path";
 
+	// API Related config file keys
+	String BASE_URI = "baseURI";
+
+	String DATA_FILE_PATH = "./TestData.xlsx";
+
 }

@@ -62,6 +62,7 @@ public class FlightBookingTestCases extends BaseTest {
 		ConfirmationPage confirmationPage = new ConfirmationPage(driver);
 		assertEquals(confirmationPage.getLblId().isDisplayed(), true);
 		confirmationPage.verifyConfirmationId();
+
 	}
 
 }

@@ -4,7 +4,7 @@
 	<listeners>
 		<listener class-name="com.blaze.listeners.TestListeners" />
 	</listeners>
-	<test name="Test">
+	<test name="Blaze UI Test cases">
 		<parameter name="browser" value="chrome" />
 		<classes>
 			<class

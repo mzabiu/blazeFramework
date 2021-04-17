@@ -42,12 +42,17 @@ public class TestListeners implements ITestListener, FrameworkConstants {
 	public void onTestFailure(ITestResult result) {
 
 		testGroups = (String) result.getTestContext().getAttribute("groups");
-		EventFiringWebDriver driver = (EventFiringWebDriver) result.getTestContext().getAttribute("WebDriver");
-		String path = takeScreenshot(driver, result.getMethod().getMethodName());
+		String hyperLink = "API Validation and hence NA";
 
-		MyLog.onlyReport("<a href='" + path + "'>Screen shot</a>");
+		if (!(Boolean) result.getTestContext().getAttribute("api.validation")) {
+			EventFiringWebDriver driver = (EventFiringWebDriver) result.getTestContext().getAttribute("WebDriver");
+			String path = takeScreenshot(driver, result.getMethod().getMethodName());
 
-		String hyperLink = "=HYPERLINK(\"file://" + path + "\", \"click here\")";
+			MyLog.onlyReport("<a href='" + path + "'>Screen shot</a>");
+
+			hyperLink = "=HYPERLINK(\"file://" + path + "\", \"click here\")";
+
+		}
 		executionResult.add(new String[] { result.getName(), testGroups, getExecutionDate(),
 				result.getThrowable().toString(), "Failed", hyperLink });
 

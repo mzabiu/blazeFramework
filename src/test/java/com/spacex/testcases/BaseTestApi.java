@@ -44,4 +44,5 @@ public abstract class BaseTestApi extends CommonUtils implements FrameworkConsta
 		ReadExcelDataApi xl = new ReadExcelDataApi("spaceX", this.getClass().getSimpleName());
 		return xl.getTestdata();
 	}
+
 }

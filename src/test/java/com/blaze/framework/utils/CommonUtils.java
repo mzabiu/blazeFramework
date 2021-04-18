@@ -11,7 +11,7 @@ import org.json.simple.parser.JSONParser;
 
 import io.restassured.response.Response;
 
-public class CommonUtils {
+public class CommonUtils {	
 
 	public static JSONObject returDefaultPayLoadObject(String filePath) {
 		// To get the JSON request from external file
@@ -83,7 +83,7 @@ public class CommonUtils {
 	public void assertingItemSizeUsingHasItem(Response response, String jsonPathOfValue, int size) {
 
 //		eg : response.then().assertThat().body("places.'place name'", hasSize(size));
-		
+
 		response.then().assertThat().body(jsonPathOfValue, hasSize(size));
 	}
 

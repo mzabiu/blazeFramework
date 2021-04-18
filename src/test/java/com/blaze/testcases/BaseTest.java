@@ -45,7 +45,9 @@ public class BaseTest implements FrameworkConstants {
 	String appUrl;
 
 	@BeforeSuite(alwaysRun = true)
-	public void initialize(XmlTest testngXml) throws Exception {
+	public void initialize(XmlTest testngXml, ITestResult result) throws Exception {
+
+		String suiteName = result.getTestContext().getSuite().getName();
 		configPropertyData = ReadPropertiesFile.getProperties();
 		excelData = ReadExcelTestData.getSuiteData("TestData", "Data");
 		appUrl = configPropertyData.get(configPropertyData.get(BASEURL));

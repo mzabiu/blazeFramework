@@ -20,7 +20,7 @@ public class GetLaunchPadsTestCases extends BaseTestApi {
 
 		/*******************************************************
 		 * Send a GET request to /booking/{id} and check that the response has HTTP
-		 * status code 200
+		 * status code 200 response header validation
 		 ******************************************************/
 
 		// Sending the GET request for a specific booking id and receiving the response
@@ -41,5 +41,14 @@ public class GetLaunchPadsTestCases extends BaseTestApi {
 		// Using the POJO class
 		AllureLogger.logToAllure("Asserting of response body with the data from test data excel");
 
+		// Reader header of a give name. In this line we will get
+		// Header named Content-Type
+		Assert.assertEquals(response.header("Content-Type").equals("application/json; charset=utf-8"), true);
+		AllureLogger.logToAllure("Content-Type value: " + response.header("Content-Type"));
+
+		// Header named Content-Encoding
+		String acceptLanguage = response.header("Content-Encoding");
+
+		AllureLogger.logToAllure(acceptLanguage);
 	}
 }

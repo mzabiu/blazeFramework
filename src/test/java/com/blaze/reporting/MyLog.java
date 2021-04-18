@@ -24,7 +24,8 @@ public class MyLog extends Reporter implements FrameworkConstants {
 
 	static {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy-hh-mm-ss");
-		System.setProperty("current.date.time", dateFormat.format(new Date()));
+		System.setProperty("current.date.time",
+				ReadPropertiesFile.getProperties().get(REPORT_NAME) + "_" + dateFormat.format(new Date()));
 		PropertyConfigurator.configure(propertyPath);
 
 	}

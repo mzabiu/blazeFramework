@@ -34,4 +34,7 @@ public interface FrameworkConstants {
 
 	String DATA_FILE_PATH = "./TestData.xlsx";
 
+	// log and excel report name
+	String REPORT_NAME = "reportName";
+
 }

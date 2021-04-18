@@ -24,6 +24,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.xml.XmlTest;
 
+import com.blaze.framework.utils.CommonUtils;
 import com.blaze.framework.utils.FrameworkConstants;
 import com.blaze.framework.utils.ReadExcelTestData;
 import com.blaze.framework.utils.ReadPropertiesFile;
@@ -32,7 +33,7 @@ import com.blaze.reporting.MyLog;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class BaseTest implements FrameworkConstants {
+public class BaseTest extends CommonUtils implements FrameworkConstants {
 
 	public Map<String, String> configPropertyData;
 	public Map<String, HashMap<String, String>> excelData;
@@ -45,9 +46,10 @@ public class BaseTest implements FrameworkConstants {
 	String appUrl;
 
 	@BeforeSuite(alwaysRun = true)
-	public void initialize(XmlTest testngXml, ITestResult result) throws Exception {
+	public void initialize(XmlTest testngXml, ITestContext context) throws Exception {
 
-		String suiteName = result.getTestContext().getSuite().getName();
+		context.setAttribute("api.validation", true);
+		updateSuiteName(context.getSuite().getName());
 		configPropertyData = ReadPropertiesFile.getProperties();
 		excelData = ReadExcelTestData.getSuiteData("TestData", "Data");
 		appUrl = configPropertyData.get(configPropertyData.get(BASEURL));

@@ -4,14 +4,17 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.hasSize;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.util.Properties;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import io.restassured.response.Response;
 
-public class CommonUtils {	
+public class CommonUtils {
 
 	public static JSONObject returDefaultPayLoadObject(String filePath) {
 		// To get the JSON request from external file
@@ -85,6 +88,22 @@ public class CommonUtils {
 //		eg : response.then().assertThat().body("places.'place name'", hasSize(size));
 
 		response.then().assertThat().body(jsonPathOfValue, hasSize(size));
+	}
+
+	public void updateSuiteName(String suiteName) throws Exception {
+
+		String path = FrameworkConstants.CURRENT_DIR + "/src/main/resources/com/blaze/config/config.properties";
+
+		FileInputStream in = new FileInputStream(path);
+		Properties props = new Properties();
+		props.load(in);
+		in.close();
+
+		FileOutputStream out = new FileOutputStream(path);
+		props.setProperty(FrameworkConstants.REPORT_NAME, suiteName);
+		props.store(out, null);
+		out.close();
+
 	}
 
 }

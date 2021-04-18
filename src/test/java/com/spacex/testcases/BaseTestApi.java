@@ -30,10 +30,15 @@ public abstract class BaseTestApi extends CommonUtils implements FrameworkConsta
 	public Map<String, String> configPropertyData;
 
 	@BeforeSuite(alwaysRun = true)
-	public void setBaseURI(ITestContext context) {
+	public void setBaseURI(ITestContext context) throws Exception {
 
 		context.setAttribute("api.validation", true);
+		updateSuiteName(context.getSuite().getName());
 		configPropertyData = ReadPropertiesFile.getProperties();
+
+		// setting the name of the log and excel report at runtime based on the suite
+		// getting executed
+
 		AllureLogger.logToAllure("The base URI is : " + configPropertyData.get(BASE_URI));
 		requestSpec = new RequestSpecBuilder().setBaseUri(configPropertyData.get(BASE_URI)).build();
 		MyLog.logInfo("Request Specification is :" + requestSpec);

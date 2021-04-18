@@ -2,6 +2,7 @@ package com.blaze.listeners;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -79,7 +80,8 @@ public class TestListeners implements ITestListener, FrameworkConstants {
 
 	public void onFinish(ITestContext context) {
 		try {
-			GenerateExcelReport.writeFileUsingPOI(new ArrayList<Object[]>(executionResult), getFileName("Result"));
+			GenerateExcelReport.writeFileUsingPOI(new ArrayList<Object[]>(executionResult),
+					getFileName(ReadPropertiesFile.getProperties().get(REPORT_NAME)));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -126,8 +128,9 @@ public class TestListeners implements ITestListener, FrameworkConstants {
 	 * @return
 	 */
 	private String getFileName(String methodName) {
-		Date date = new Date();
-		return methodName + "_" + date.toString().replace(":", "_").replace(",", "_");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy-hh-mm-ss");
+
+		return methodName + "_" + dateFormat.format(new Date()).toString().replace(":", "_").replace(",", "_");
 
 	}
 

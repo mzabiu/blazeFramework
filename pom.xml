@@ -21,9 +21,8 @@
 					<version>2.20</version>
 					<configuration>
 						<suiteXmlFiles>
-							<suiteXmlFile>src\main\resources\com\orangehrm\suites\${suiteFile}</suiteXmlFile>
-							<suiteXmlFile>target/surefire-reports/testngfailed.xml</suiteXmlFile>
-						</suiteXmlFiles>
+							<suiteXmlFile>src\main\resources\com\blaze\suites\${suiteFile}</suiteXmlFile>
+										</suiteXmlFiles>
 						<systemPropertyVariables>
 							<jenkins.buildurl>${env.BUILD_URL}</jenkins.buildurl>
 						</systemPropertyVariables>

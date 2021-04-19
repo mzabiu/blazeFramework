@@ -74,7 +74,7 @@ public class BaseTest extends CommonUtils implements FrameworkConstants {
 				MyLog.logInfo("The execution is triggered from jenkins and the url is "
 						+ System.getProperty("jenkins.buildurl"));
 
-				chromeOptions.setBinary(APP_DATA + "\\Local\\Google\\Chrome\\Application\\chrome.exe");
+				chromeOptions.setBinary(APP_DATA + "\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe");
 			}
 			driver1 = new ChromeDriver(chromeOptions);
 		} else if ((browserName.equalsIgnoreCase("edge"))) {
